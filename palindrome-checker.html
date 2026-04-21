@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Is palindrome?</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="ProjectNav"><a href="index.html">Home</a></div>
+
+    <h1>We can checking teh words!</h1>
+
+    <div id="UI">
+        <input type="text" id="inputString" placeholder="back words?">
+        <button id="theButton">Check</button>
+        <p id="feedback">Le feedback ici…</p>
+    </div>
+
+
+    <script>
+        console.clear();
+        //console.log("Bonjour!");
+
+        const theFeedback = document.getElementById("feedback");
+        theFeedback.innerHTML = "bla bla chaton.";
+
+        const theButton = document.getElementById("theButton");
+        theButton.addEventListener("click", checkTheText);
+
+        function checkTheText(){
+
+            const theInput = document.getElementById("inputString");
+
+            if( theInput.value == "chaton"){
+                theFeedback.innerHTML = "Error: input is a kitten.";
+            }
+            else if( theInput.value == ""){
+                theFeedback.innerHTML = "Fill in the form, dumbass.";
+            }
+            else if( checkPalindrome(theInput.value) == true ){
+                theFeedback.innerHTML = "Yesh, " + theInput.value + " is a palindrome.";
+            }
+            else{
+                theFeedback.innerHTML = "No no no, " + theInput.value + " is NOT a palindrome. <br>Try again, loser.";
+            }
+
+            theInput.value = ""; // vider apres usage
+        } // checkTheText
+
+        function checkPalindrome(str){
+
+            str = str.replaceAll(" ", "");
+            str = str.toLowerCase();
+
+            let theLetters = str.split("");
+            let verlan = theLetters.reverse();
+            let rts = verlan.join("");
+
+            if( str == rts){
+                return true;
+            }
+            else{
+                return false;
+            }
+        } // checkPalindrome
+
+
+
+
+    </script>
+
+</body>
+</html>
