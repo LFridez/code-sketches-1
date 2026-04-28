@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+    <div id="ProjectNav"><a href="index.html">Home</a></div>
     
     <h1 id="Strategy"> ... </h1>
 
@@ -46,6 +47,34 @@
         }
 
     </script>
+
+    <style>
+        body{
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 80vh;
+            background-color: #EEE;
+        }
+        #Strategy{
+            font-size: clamp( 1rem, 4vw, 12rem );
+
+            width: 20ch;
+            aspect-ratio: 16/9;
+
+            font-weight: 400;
+            padding: 1rem;
+            background-color: white;
+            border: 1px solid #666;
+            border-radius: 0.5rem;
+            box-shadow: 0.2rem 0.3rem 1rem #0006;
+        }
+        button { opacity: 0.3; }
+        button:hover { opacity: 1; }
+    </style>
+
+    <button onclick="window.location.reload();" >⌘&thinsp;R</button>
 
 </body>
 </html>
