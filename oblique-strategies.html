@@ -58,16 +58,19 @@
             background-color: #EEE;
         }
         #Strategy{
-            font-size: clamp( 1rem, 4vw, 12rem );
+                    /* clamp  min, normal, max */
+            font-size: clamp(1rem, 2.5vw, 2rem);
 
-            width: 20ch;
-            aspect-ratio: 16/9;
+            width: 25ch; /* largeur du bloc mésuré en characères, donc selon la taille du typo… */
+            aspect-ratio: 1.41 / 1; /* hauteur definie par la largeur */
 
+            align-content: center;
             font-weight: 400;
-            padding: 1rem;
+            padding: 1em;
+            padding-bottom: 3em;
             background-color: white;
             border: 1px solid #666;
-            border-radius: 0.5rem;
+            border-radius: 0.5em;
             box-shadow: 0.2rem 0.3rem 1rem #0006;
         }
         button { opacity: 0.3; }
