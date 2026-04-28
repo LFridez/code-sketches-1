@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oblique Strategies</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <h1 id="Strategy"> ... </h1>
+
+    <script src="oblique-stratiges.js"></script>
+    <script>
+
+        window.onload = function(){
+            var strategy = document.getElementById("Strategy");
+           
+            // version 0.0 test
+            // strategy.innerHTML = "Hello,";
+
+            // version 0.1 – pile ou face
+            // if( Math.random() > 0.5 ){
+            //     strategy.innerHTML = "World.";
+            // }
+            
+            // version 0.2 – complet
+            // const Strategies = [
+            //     "Chaton",  // 0
+            //     "Loutre",  // 1
+            //     "Chevre",  // 2
+            //     "Platypus" // 3
+            //                // ... 99
+            // ];
+
+            // version "comprehensible"
+            // let total = Strategies.length;   // 100
+            // let rando = Math.random();       // 0.345678
+            // let hasar = rando * total;       // 34.5678
+            // let choix = Math.floor( hasar ); // 34
+            
+            // strategy.innerHTML = Strategies[ choix ];
+
+            // version compacte
+            strategy.innerHTML = Strategies[ Math.floor( Math.random() * Strategies.length ) ];
+        }
+
+    </script>
+
+</body>
+</html>
