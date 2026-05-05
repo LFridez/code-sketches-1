@@ -6,12 +6,57 @@
     <title>Chaton</title>
     <link rel="stylesheet" href="style.css">
 
-    <script src="p5.js"></script>
+    <!-- <script src="p5.js"></script> -->
+    <!-- <script src="circles.js"></script> -->
 
 </head>
 <body>
     <h1>code experiments</h1>
-    <script src="circles.js"></script>
+
+    <div class="gallery">
+        
+        <a href="circles.html">
+            <img src="circles.png" alt="">
+        </a>
+
+        <a href="checkers.html"><img src="checkers.png" alt=""></a>
+        <a href="flags.html"><img src="flags.png" alt=""></a>
+    </div>
+
+
+    <div class="lb" id="lb" aria-hidden="true">
+        <button type="button" aria-label="Fermer">×</button>
+        <iframe allow="camera; microphone; autoplay"></iframe>
+    </div>
+    <style>
+        .lb { position: fixed; inset: 0; background: rgba(0,0,0,.85); display: none; z-index: 9999; }
+        .lb.open { display: block; }
+        .lb iframe { position: absolute; top: 5vh; left: 5vw; width: 90vw; height: 90vh; border: 0; background: #fff; }
+        .lb button { z-index: 99; position: absolute; top: 1rem; right: 1rem; width: 3rem; height: 3rem; font-size: 1.5rem; background: #fff; border: 0; cursor: pointer; }
+    </style>
+    <script>
+        function makeLightbox(){
+            const lb = document.getElementById('lb');
+            const frame = lb.querySelector('iframe');
+            const close = lb.querySelector('button');
+        
+            const open = url => { frame.src = url; lb.classList.add('open'); lb.setAttribute('aria-hidden', 'false'); };
+            const shut = () => { frame.src = 'about:blank'; lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); };
+        
+            document.querySelectorAll('.gallery a').forEach(a => {
+            a.addEventListener('click', e => { e.preventDefault(); open(a.href); });
+            });
+            close.addEventListener('click', shut);
+            lb.addEventListener('click', e => { if (e.target === lb) shut(); });
+            document.addEventListener('keydown', e => { if (e.key === 'Escape' && lb.classList.contains('open')) shut(); });
+        }
+        makeLightbox();
+    </script>
+
+
+
+
+
 
     <nav>
         <ul><a href="color-flipper.html">Color Flipper</a></ul>
