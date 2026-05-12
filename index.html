@@ -9,6 +9,49 @@
     <!-- <script src="p5.js"></script> -->
     <!-- <script src="circles.js"></script> -->
 
+    <style>
+        /* test css color mix… just for fun. */
+        body { 
+            background: pink; 
+ 
+            /* https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Values/color_value/color-mix */
+            /* color mix */
+            background: color-mix(in srgb, pink, blue);
+ 
+            /* color mix with % */
+            background: color-mix(in srgb, pink 80%, blue 20%);
+ 
+            /* color variable */
+            --myColor: #f1357A;
+
+            /* color mix with variable */
+            background: color-mix(in srgb, var(--myColor) 80%, blue 20%);
+            
+            /* https://developer.mozilla.org/en-US/docs/Web/CSS/Guides/Colors/Using_relative_colors */
+            /* relative color: "from" */
+            background: hsl( from #F1357A h s l );
+
+            /* remplace les varaibles h s l avec un autre valeur */
+            background: hsl( from #F1357A h s 50% );
+
+            /* valeur hue calculée */
+            background: hsl( from #F1357A calc(h + 20) s l );
+
+            /* color system */
+            --primary100: hsl(from var(--myColor) h s 10%);
+            --primary200: hsl(from var(--myColor) h s 20%); 
+            --primary300: hsl(from var(--myColor) h s 30%); 
+            --primary400: hsl(from var(--myColor) h s 40%);
+            --primary500: hsl(from var(--myColor) h s 50%);
+            --primary600: hsl(from var(--myColor) h s 60%);
+            --primary700: hsl(from var(--myColor) h s 70%);
+            --primary800: hsl(from var(--myColor) h s 80%);
+            --primary900: hsl(from var(--myColor) h s 90%);
+            
+            background: var(--primary800); 
+        }
+    </style>
+
 </head>
 <body>
     <h1>code experiments</h1>
