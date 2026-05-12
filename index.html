@@ -44,7 +44,7 @@
             const shut = () => { frame.src = 'about:blank'; lb.classList.remove('open'); lb.setAttribute('aria-hidden', 'true'); };
         
             document.querySelectorAll('.gallery a').forEach(a => {
-            a.addEventListener('click', e => { e.preventDefault(); open(a.href); });
+                a.addEventListener('click', e => { e.preventDefault(); open(a.href); });
             });
             close.addEventListener('click', shut);
             lb.addEventListener('click', e => { if (e.target === lb) shut(); });
