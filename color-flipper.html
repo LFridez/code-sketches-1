@@ -4,19 +4,66 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Web dev – color flipper</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Notable&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
     <style>
         body {
-            font-family: system-ui;
+            background-color: #ffffff;
+            color: #000000;
+            text-align: center;
+        }
+        h1 {
+            color: #000000;
+            margin-top: 40px;
+            margin-bottom: 30px;
+        }
+        #ProjectNav {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+        #ProjectNav a {
+            font-size: 28px;
+            text-decoration: none;
+            color: #000000;
+        }
+        button {
+            border-radius: 6px;
+            border-width: 1px;
+            border-style: solid;
+            border-color: #cccccc;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            padding-left: 20px;
+            padding-right: 20px;
+            font-size: 16px;
+            background-color: #f0f0f0;
+            color: #000000;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            transition-property: all;
+            transition-duration: 0.2s;
+            cursor: pointer;
+            margin-left: 5px;
+            margin-right: 5px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #202020;
+            color: #ffffff;
+            border-color: #202020;
+            box-shadow: 0px 6px 12px rgba(0, 0, 0, 0.25);
         }
     </style>
 </head>
 <body>
-
+    <div id="ProjectNav"><a href="index.html">←</a></div>
     <h1>We can flipping teh colors!</h1>
 
-    <button onClick="setColor('Papayawhip')" >Papaya-Whip</button>
-    <button onClick="setColor('Peachpuff')"  >Peach Puff</button>
-    <button onClick="setColor('Powderblue')" >Powder Blue</button>
+    <button onclick="setColor('#fcd0a1')">Cater's forehead</button>
+    <button onclick="setColor('#d95d39')">Fall color</button>
+    <button onclick="startJeb()">Minecraft jeb_ sheep</button>
 
     <br><br>
 
@@ -24,28 +71,46 @@
 
     <script>
         const body = document.getElementsByTagName("body")[0];
-        // body.style.backgroundColor = "magenta";
+
+        let jebInterval = null;
+        let hue = 0;
 
         setColor("#DDD");
         
         function setColor(name){
+            if (jebInterval != null) {
+                clearInterval(jebInterval);
+                jebInterval = null;
+            }
             body.style.backgroundColor = name;
+            body.style.color = "black";
+        }
+
+        function startJeb(){
+            if (jebInterval != null) {
+                clearInterval(jebInterval);
+                jebInterval = null;
+            }
+            jebInterval = setInterval(function(){
+                hue = hue + 1;
+                if (hue > 360) {
+                    hue = 0;
+                }
+                body.style.backgroundColor = "hsl(" + hue + ", 80%, 60%)";
+                body.style.color = "white";
+            }, 30);
         }
 
         function randomColor(){
-            //console.log("Hi!");
+            if (jebInterval != null) {
+                clearInterval(jebInterval);
+                jebInterval = null;
+            }
             let R = Math.round( Math.random() * 255 );
             let V = Math.round( Math.random() * 255 );
             let B = Math.round( Math.random() * 255 );
-            
-            // plus stupide et chiant
-            // let theColor = "rgb(" + R + "," + V + "," + B + ")";
-            
-            // plus élégant
-            let theColor = `rgb( ${R} , ${V} , ${B} )`;
-
+            let theColor = "rgb(" + R + "," + V + "," + B + ")";
             body.style.backgroundColor = theColor;
-
 
             if( R + V + B  < 383 ) {
                 body.style.color = "white";
@@ -53,7 +118,6 @@
             else {
                 body.style.color = "black";
             }
-
         }
     </script>
     
